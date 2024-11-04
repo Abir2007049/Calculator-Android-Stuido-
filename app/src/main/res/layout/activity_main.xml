@@ -11,7 +11,7 @@
     <TextView
         android:id="@+id/screen"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="150dp"
         android:padding="15dp"
         android:text="0"
         android:textColor="@color/black"
@@ -26,7 +26,7 @@
     <GridLayout
         android:id="@+id/grid_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_below="@id/screen"
         android:rowCount="5"
         android:columnCount="4"
@@ -41,7 +41,7 @@
             android:layout_height="wrap_content"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
-            android:textSize="18sp"
+            android:textSize="12sp"
             android:backgroundTint="@color/green"/>
 
         <Button
@@ -51,7 +51,7 @@
             android:layout_height="wrap_content"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
-            android:textSize="18sp"
+            android:textSize="12sp"
             android:backgroundTint="@color/red"/>
 
         <Button
@@ -61,7 +61,7 @@
             android:layout_height="wrap_content"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
-            android:textSize="18sp"
+            android:textSize="12sp"
             android:backgroundTint="@color/orange"/>
 
         <Button
@@ -71,7 +71,7 @@
             android:layout_height="wrap_content"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
-            android:textSize="18sp"
+            android:textSize="12sp"
             android:backgroundTint="@color/orange"/>
 
 
@@ -82,7 +82,7 @@
             android:layout_height="wrap_content"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
-            android:textSize="18sp"
+            android:textSize="12sp"
             android:textColor="@color/black"
             android:backgroundTint="@color/white" />
 
@@ -93,7 +93,7 @@
             android:layout_height="wrap_content"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
-            android:textSize="18sp"
+            android:textSize="12sp"
             android:textColor="@color/black"
             android:backgroundTint="@color/white" />
 
@@ -104,7 +104,7 @@
             android:layout_height="wrap_content"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
-            android:textSize="18sp"
+            android:textSize="12sp"
             android:textColor="@color/black"
             android:backgroundTint="@color/white" />
 
@@ -115,7 +115,7 @@
             android:layout_height="wrap_content"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
-            android:textSize="18sp"
+            android:textSize="12sp"
             android:backgroundTint="@color/orange"/>
 
 
@@ -126,7 +126,7 @@
             android:layout_height="wrap_content"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
-            android:textSize="18sp"
+            android:textSize="12sp"
             android:textColor="@color/black"
             android:backgroundTint="@color/white" />
 
@@ -137,7 +137,7 @@
             android:layout_height="wrap_content"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
-            android:textSize="18sp"
+            android:textSize="12sp"
             android:textColor="@color/black"
             android:backgroundTint="@color/white" />
 
@@ -148,7 +148,7 @@
             android:layout_height="wrap_content"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
-            android:textSize="18sp"
+            android:textSize="12sp"
             android:textColor="@color/black"
             android:backgroundTint="@color/white" />
 
@@ -159,7 +159,7 @@
             android:layout_height="wrap_content"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
-            android:textSize="18sp"
+            android:textSize="12sp"
             android:backgroundTint="@color/orange"/>
 
 
@@ -170,7 +170,7 @@
             android:layout_height="wrap_content"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
-            android:textSize="18sp"
+            android:textSize="12sp"
             android:textColor="@color/black"
             android:backgroundTint="@color/white" />
 
@@ -181,7 +181,7 @@
             android:layout_height="wrap_content"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
-            android:textSize="18sp"
+            android:textSize="12sp"
             android:textColor="@color/black"
             android:backgroundTint="@color/white" />
 
@@ -192,7 +192,7 @@
             android:layout_height="wrap_content"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
-            android:textSize="18sp"
+            android:textSize="12sp"
             android:textColor="@color/black"
             android:backgroundTint="@color/white" />
 
@@ -203,7 +203,7 @@
             android:layout_height="wrap_content"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
-            android:textSize="18sp"
+            android:textSize="12sp"
             android:backgroundTint="@color/orange"/>
 
 
@@ -214,7 +214,7 @@
             android:layout_height="wrap_content"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
-            android:textSize="18sp"
+            android:textSize="12sp"
             android:backgroundTint="@color/orange"/>
 
         <Button
@@ -224,7 +224,7 @@
             android:layout_height="wrap_content"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
-            android:textSize="18sp"
+            android:textSize="12sp"
             android:textColor="@color/black"
         android:backgroundTint="@color/white"
          />
@@ -236,7 +236,7 @@
             android:layout_height="wrap_content"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
-            android:textSize="18sp"
+            android:textSize="12sp"
             android:backgroundTint="@color/orange"/>
 
         <Button
@@ -246,7 +246,7 @@
             android:layout_height="wrap_content"
             android:layout_rowWeight="1"
             android:layout_columnWeight="1"
-            android:textSize="18sp"
+            android:textSize="12sp"
             android:backgroundTint="@color/orange"/>
 
     </GridLayout>
