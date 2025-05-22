@@ -1,3 +1,36 @@
 <resources>
     <string name="app_name">Calculator(Android)</string>
+
+<style name="CalcButtonBase">
+<item name="android:layout_width">0dp</item>
+<item name="android:layout_height">wrap_content</item>
+<item name="android:layout_rowWeight">1</item>
+<item name="android:layout_columnWeight">1</item>
+<item name="android:textSize">18sp</item>
+<item name="android:textColor">#FFFFFF</item>
+<item name="android:backgroundTint">#2E2E2E</item>
+<item name="android:fontFamily">sans-serif-medium</item>
+<item name="android:background">@drawable/btn_background</item>
+</style>
+
+<style name="CalcButtonNum" parent="CalcButtonBase">
+<item name="android:backgroundTint">#FFFFFF</item>
+<item name="android:textColor">#000000</item>
+</style>
+
+<style name="CalcButtonOrange" parent="CalcButtonBase">
+<item name="android:backgroundTint">#FF9800</item>
+</style>
+
+<style name="CalcButtonGreen" parent="CalcButtonBase">
+<item name="android:backgroundTint">#4CAF50</item>
+</style>
+
+<style name="CalcButtonRed" parent="CalcButtonBase">
+<item name="android:backgroundTint">#F44336</item>
+</style>
+
+<style name="CalcButtonEquals" parent="CalcButtonBase">
+<item name="android:backgroundTint">#00BCD4</item>
+</style>
 </resources>

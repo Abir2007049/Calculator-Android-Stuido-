@@ -1,254 +1,78 @@
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
+    android:background="#121212"
     android:padding="16dp"
     tools:context=".MainActivity">
 
-    <!-- Display Screen for Calculator -->
+    <!-- Display Screen -->
     <TextView
         android:id="@+id/screen"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:padding="15dp"
-        android:text="0"
-        android:textColor="@color/black"
-        android:textSize="36sp"
-        android:textStyle="bold"
-        android:gravity="end"
-        android:background="@color/white"
         android:layout_marginBottom="20dp"
-        android:layout_alignParentTop="true" />
+        android:layout_alignParentTop="true"
+        android:background="@drawable/rounded_white_bg"
+        android:padding="20dp"
+        android:text="0"
+        android:textColor="#000000"
+        android:textSize="42sp"
+        android:textStyle="bold"
+        android:gravity="end|center_vertical"
+        android:elevation="6dp" />
 
-
+    <!-- Button Grid -->
     <GridLayout
         android:id="@+id/grid_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/screen"
-        android:rowCount="5"
+        android:layout_margin="10dp"
         android:columnCount="4"
-        android:padding="10dp"
-        android:layout_margin="16dp">
-
+        android:rowCount="5"
+        android:alignmentMode="alignMargins"
+        android:useDefaultMargins="true">
 
         <Button
             android:id="@+id/button_on"
             android:text="ON"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:textSize="12sp"
-            android:backgroundTint="@color/green"/>
+            style="@style/CalcButtonGreen" />
 
         <Button
             android:id="@+id/button_off"
             android:text="OFF"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:textSize="12sp"
-            android:backgroundTint="@color/red"/>
+            style="@style/CalcButtonRed" />
 
         <Button
             android:id="@+id/button_ac"
             android:text="AC"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:textSize="12sp"
-            android:backgroundTint="@color/orange"/>
+            style="@style/CalcButtonOrange" />
 
         <Button
             android:id="@+id/button_div"
             android:text="/"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:textSize="12sp"
-            android:backgroundTint="@color/orange"/>
+            style="@style/CalcButtonOrange" />
 
+        <Button android:id="@+id/button_7" android:text="7" style="@style/CalcButtonNum" />
+        <Button android:id="@+id/button_8" android:text="8" style="@style/CalcButtonNum" />
+        <Button android:id="@+id/button_9" android:text="9" style="@style/CalcButtonNum" />
+        <Button android:id="@+id/button_mul" android:text="*" style="@style/CalcButtonOrange" />
 
-        <Button
-            android:id="@+id/button_7"
-            android:text="7"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:textSize="12sp"
-            android:textColor="@color/black"
-            android:backgroundTint="@color/white" />
+        <Button android:id="@+id/button_4" android:text="4" style="@style/CalcButtonNum" />
+        <Button android:id="@+id/button_5" android:text="5" style="@style/CalcButtonNum" />
+        <Button android:id="@+id/button_6" android:text="6" style="@style/CalcButtonNum" />
+        <Button android:id="@+id/button_sub" android:text="-" style="@style/CalcButtonOrange" />
 
-        <Button
-            android:id="@+id/button_8"
-            android:text="8"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:textSize="12sp"
-            android:textColor="@color/black"
-            android:backgroundTint="@color/white" />
+        <Button android:id="@+id/button_1" android:text="1" style="@style/CalcButtonNum" />
+        <Button android:id="@+id/button_2" android:text="2" style="@style/CalcButtonNum" />
+        <Button android:id="@+id/button_3" android:text="3" style="@style/CalcButtonNum" />
+        <Button android:id="@+id/button_add" android:text="+" style="@style/CalcButtonOrange" />
 
-        <Button
-            android:id="@+id/button_9"
-            android:text="9"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:textSize="12sp"
-            android:textColor="@color/black"
-            android:backgroundTint="@color/white" />
-
-        <Button
-            android:id="@+id/button_mul"
-            android:text="X"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:textSize="12sp"
-            android:backgroundTint="@color/orange"/>
-
-
-        <Button
-            android:id="@+id/button_4"
-            android:text="4"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:textSize="12sp"
-            android:textColor="@color/black"
-            android:backgroundTint="@color/white" />
-
-        <Button
-            android:id="@+id/button_5"
-            android:text="5"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:textSize="12sp"
-            android:textColor="@color/black"
-            android:backgroundTint="@color/white" />
-
-        <Button
-            android:id="@+id/button_6"
-            android:text="6"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:textSize="12sp"
-            android:textColor="@color/black"
-            android:backgroundTint="@color/white" />
-
-        <Button
-            android:id="@+id/button_sub"
-            android:text="-"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:textSize="12sp"
-            android:backgroundTint="@color/orange"/>
-
-
-        <Button
-            android:id="@+id/button_1"
-            android:text="1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:textSize="12sp"
-            android:textColor="@color/black"
-            android:backgroundTint="@color/white" />
-
-        <Button
-            android:id="@+id/button_2"
-            android:text="2"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:textSize="12sp"
-            android:textColor="@color/black"
-            android:backgroundTint="@color/white" />
-
-        <Button
-            android:id="@+id/button_3"
-            android:text="3"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:textSize="12sp"
-            android:textColor="@color/black"
-            android:backgroundTint="@color/white" />
-
-        <Button
-            android:id="@+id/button_add"
-            android:text="+"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:textSize="12sp"
-            android:backgroundTint="@color/orange"/>
-
-
-        <Button
-            android:id="@+id/button_del"
-            android:text="DEL"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:textSize="12sp"
-            android:backgroundTint="@color/orange"/>
-
-        <Button
-            android:id="@+id/button_0"
-            android:text="0"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:textSize="12sp"
-            android:textColor="@color/black"
-        android:backgroundTint="@color/white"
-         />
-
-        <Button
-            android:id="@+id/button_dot"
-            android:text="."
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:textSize="12sp"
-            android:backgroundTint="@color/orange"/>
-
-        <Button
-            android:id="@+id/button_eq"
-            android:text="="
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_rowWeight="1"
-            android:layout_columnWeight="1"
-            android:textSize="12sp"
-            android:backgroundTint="@color/orange"/>
+        <Button android:id="@+id/button_del" android:text="DEL" style="@style/CalcButtonOrange" />
+        <Button android:id="@+id/button_0" android:text="0" style="@style/CalcButtonNum" />
+        <Button android:id="@+id/button_dot" android:text="." style="@style/CalcButtonOrange" />
+        <Button android:id="@+id/button_eq" android:text="=" style="@style/CalcButtonEquals" />
 
     </GridLayout>
-
 </RelativeLayout>

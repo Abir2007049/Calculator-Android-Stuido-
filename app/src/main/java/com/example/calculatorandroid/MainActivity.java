@@ -8,135 +8,158 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
-    double firstNum;
-    String operation;
-
 
     TextView screen;
-    Button off;
+    StringBuilder expression = new StringBuilder();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
         screen = findViewById(R.id.screen);
-        //off = findViewById(R.id.button_off);
 
+        Button[] numberButtons = {
+                findViewById(R.id.button_0), findViewById(R.id.button_1), findViewById(R.id.button_2),
+                findViewById(R.id.button_3), findViewById(R.id.button_4), findViewById(R.id.button_5),
+                findViewById(R.id.button_6), findViewById(R.id.button_7), findViewById(R.id.button_8),
+                findViewById(R.id.button_9)
+        };
 
-        Button num0 = findViewById(R.id.button_0);
-        Button num1 = findViewById(R.id.button_1);
-        Button num2 = findViewById(R.id.button_2);
-        Button num3 = findViewById(R.id.button_3);
-        Button num4 = findViewById(R.id.button_4);
-        Button num5 = findViewById(R.id.button_5);
-        Button num6 = findViewById(R.id.button_6);
-        Button num7 = findViewById(R.id.button_7);
-        Button num8 = findViewById(R.id.button_8);
-        Button num9 = findViewById(R.id.button_9);
+        for (Button b : numberButtons) {
+            b.setOnClickListener(v -> {
+                expression.append(b.getText());
+                screen.setText(expression.toString());
+            });
+        }
 
+        Button add = findViewById(R.id.button_add);
+        Button sub = findViewById(R.id.button_sub);
+        Button mul = findViewById(R.id.button_mul);
+        Button div = findViewById(R.id.button_div);
+        Button dot = findViewById(R.id.button_dot);
+        Button del = findViewById(R.id.button_del);
+        Button ac = findViewById(R.id.button_ac);
         Button on = findViewById(R.id.button_on);
         Button off = findViewById(R.id.button_off);
-        Button ac = findViewById(R.id.button_ac);
-        Button del = findViewById(R.id.button_del);
-        Button div = findViewById(R.id.button_div);
-        Button add = findViewById(R.id.button_add);
-        Button mul = findViewById(R.id.button_mul);
-        Button dot = findViewById(R.id.button_dot);
-        Button sub = findViewById(R.id.button_sub);
         Button eq = findViewById(R.id.button_eq);
 
+        View.OnClickListener opListener = v -> {
+            if (expression.length() > 0 && !isOperator(expression.charAt(expression.length() - 1))) {
+                expression.append(((Button)v).getText());
+                screen.setText(expression.toString());
+            }
+        };
 
-        ac.setOnClickListener(view -> {
-            firstNum = 0;
+        add.setOnClickListener(opListener);
+        sub.setOnClickListener(opListener);
+        mul.setOnClickListener(opListener);
+        div.setOnClickListener(opListener);
+
+        dot.setOnClickListener(v -> {
+            if (expression.length() == 0 || isOperator(expression.charAt(expression.length() - 1))) {
+                expression.append("0.");
+            } else {
+                expression.append(".");
+            }
+            screen.setText(expression.toString());
+        });
+
+        del.setOnClickListener(v -> {
+            if (expression.length() > 0) {
+                expression.deleteCharAt(expression.length() - 1);
+                screen.setText(expression.length() > 0 ? expression.toString() : "0");
+            }
+        });
+
+        ac.setOnClickListener(v -> {
+            expression.setLength(0);
             screen.setText("0");
         });
 
-
-        off.setOnClickListener(view -> screen.setVisibility(View.GONE));
-
-
-        on.setOnClickListener(view -> {
+        on.setOnClickListener(v -> {
             screen.setVisibility(View.VISIBLE);
-            screen.setText("0");
+            screen.setText(expression.length() == 0 ? "0" : expression.toString());
         });
 
+        off.setOnClickListener(v -> screen.setVisibility(View.GONE));
 
-        ArrayList<Button> nums = new ArrayList<>();
-        nums.add(num0);
-        nums.add(num1);
-        nums.add(num2);
-        nums.add(num3);
-        nums.add(num4);
-        nums.add(num5);
-        nums.add(num6);
-        nums.add(num7);
-        nums.add(num8);
-        nums.add(num9);
-
-
-        for (Button b : nums) {
-            b.setOnClickListener(view -> {
-                if (!screen.getText().toString().equals("0")) {
-                    screen.setText(screen.getText().toString() + b.getText().toString());
+        eq.setOnClickListener(v -> {
+            try {
+                double result = eval(expression.toString());
+                if (result == (long) result) {
+                    screen.setText(String.valueOf((long) result));
+                    expression = new StringBuilder(String.valueOf((long) result));
                 } else {
-                    screen.setText(b.getText().toString());
+                    screen.setText(String.valueOf(result));
+                    expression = new StringBuilder(String.valueOf(result));
                 }
-            });
-        }
-
-
-        ArrayList<Button> opers = new ArrayList<>();
-        opers.add(div);
-        opers.add(mul);
-        opers.add(add);
-        opers.add(sub);
-
-
-        for (Button b : opers) {
-            b.setOnClickListener(view -> {
-                firstNum = Double.parseDouble(screen.getText().toString());
-                operation = b.getText().toString(); // Store the operation as a String
-                screen.setText("0");
-            });
-        }
-
-
-        del.setOnClickListener(view -> {
-            String num = screen.getText().toString();
-            if (num.length() > 1) {
-                screen.setText(num.substring(0, num.length() - 1));
-            } else if (num.length() == 1 && !num.equals("0")) {
-                screen.setText("0");
+            } catch (Exception e) {
+                screen.setText("Error");
+                expression.setLength(0);
             }
         });
+    }
 
-        // Set click listener for dot button
-        dot.setOnClickListener(view -> {
-            if (!screen.getText().toString().contains(".")) {
-                screen.setText(screen.getText().toString() + ".");
-            }
-        });
+    private boolean isOperator(char c) {
+        return c == '+' || c == '-' || c == '*' || c == '/';
+    }
 
+    public double eval(final String str) {
+        return new Object() {
+            int pos = -1, ch;
 
-        eq.setOnClickListener(view -> {
-            double secondNum = Double.parseDouble(screen.getText().toString());
-            double result = 0;
-
-            if (operation.equals("/")) {
-                result = firstNum / secondNum;
-            } else if (operation.equals("X")) {
-                result = firstNum * secondNum;
-            } else if (operation.equals("+")) {
-                result = firstNum + secondNum;
-            } else if (operation.equals("-")) {
-                result = firstNum - secondNum;
+            void nextChar() {
+                ch = (++pos < str.length()) ? str.charAt(pos) : -1;
             }
 
-            screen.setText(String.valueOf(result));
-            firstNum = result; // Update firstNum for subsequent operations
-        });
+            boolean eat(int charToEat) {
+                while (ch == ' ') nextChar();
+                if (ch == charToEat) {
+                    nextChar();
+                    return true;
+                }
+                return false;
+            }
 
+            double parse() {
+                nextChar();
+                double x = parseExpression();
+                if (pos < str.length()) throw new RuntimeException("Unexpected: " + (char) ch);
+                return x;
+            }
+
+            double parseExpression() {
+                double x = parseTerm();
+                while (true) {
+                    if (eat('+')) x += parseTerm();
+                    else if (eat('-')) x -= parseTerm();
+                    else return x;
+                }
+            }
+
+            double parseTerm() {
+                double x = parseFactor();
+                while (true) {
+                    if (eat('*')) x *= parseFactor();
+                    else if (eat('/')) x /= parseFactor();
+                    else return x;
+                }
+            }
+
+            double parseFactor() {
+                if (eat('+')) return parseFactor();
+                if (eat('-')) return -parseFactor();
+
+                double x;
+                int startPos = pos;
+                if ((ch >= '0' && ch <= '9') || ch == '.') {
+                    while ((ch >= '0' && ch <= '9') || ch == '.') nextChar();
+                    x = Double.parseDouble(str.substring(startPos, pos));
+                } else {
+                    throw new RuntimeException("Unexpected: " + (char) ch);
+                }
+                return x;
+            }
+        }.parse();
     }
 }
